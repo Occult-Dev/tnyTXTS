@@ -3,7 +3,7 @@
 
    <head>
 
-      <title>tnyTXTS - Smallest Note App</title>
+      <title>tnyTXTS</title>
       <meta charset=UTF-8>
       
       <style>
@@ -97,7 +97,7 @@
          span {
             grid-area: faq;
 
-            display: block;
+            display: none;
 
             border: 1px dashed #333;
 
@@ -109,7 +109,7 @@
          }
 
          div {
-            height: 35vh;
+            height: 40vh;
 
             grid-area: l;
             
@@ -179,13 +179,13 @@
 
       <main>
          <textarea placeholder="type up your tiny-little TXT here..."></textarea>
-         <button id=s onclick="save()">SAVE TXT</button>
-         <p onclick="showHelp()">[-?-]</p>
-         <button id=d onclick="deleteAll()">DELETE ALL</button>
+         <button id=s onclick="save()" title="save current TXT">SAVE TXT</button>
+         <p onclick="showHelp()" title="help / f.a.q.">[-?-]</p>
+         <button id=d onclick="deleteAll()" title="delete all saved TXTS">DELETE ALL</button>
          <span>
             Hello, thanks for checking out tnyTXTS!<br><br>
             <b><em>THE HELL IS A tnyTXTS?</em></b><br>
-            tnyTXTS is an ultra-fricken tiny [0.00 kb] web-app for taking quick and simple notes.<br>
+            tnyTXTS is an ultra-fricken tiny [9.0 kb] web-app for taking quick and simple notes.<br>
             <b><em>more specifically, WHAT THE HELL IS A TXT?</em></b><br>
             A TXT is an ultra-simple little note. No doodles, no horizontal-rules, no colors, just words.<br><br>
 
@@ -214,6 +214,7 @@
 
             <b><em>YOU'RE SOURCE CODE IS MESSY!</em></b><br>
             Your*, and I know. That was on purpose in order to keep the file-size as teeny-tiny as possible [hence the name 'tny'TXTS].<br>
+            Also, the source that you see in your browser is minified and slightly obfuscated, go checkout the <a href="https://github.com/StuffBySpencer/tnyTXTS">github repo</a> for an easier reading experience!<br>
             <b><em>YOUR SELLING MY DATA, AREN'T YOU!</em></b><br>
             You're*, and nope! As with its predecessor, tnyTXTS doesn't store anything you enter on any server. All TXTS are stored locally to your machine using the localStorage API. tnyTXTS doesn't track you, serve malicious ads, mine crypto-currency in the background, or sell your webcam pics to 3rd parties. You can even use tnyTXTS to its FULL functionality when offline. It's <a href="https://github.com/StuffBySpencer/tnyTXTS">open-sourced</a> & hackable.<br>
             <b><em>WHAT IF THIS SITE BREAKS? CAN I SUE YOU FOR MONIES?</em></b><br>
@@ -277,6 +278,7 @@
                   date: TXTdate,
                   text: document.getElementsByTagName('textarea')[0].value
                });
+               editingID = TXTS.length;
             }
 
             localStorage.TXTstorage = JSON.stringify(TXTS);
